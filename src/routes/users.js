@@ -5,7 +5,7 @@ const { authenticated } = require('../middleware/authMiddleware');
 router.route('/')
     .get(authenticated, async (req, res) => {
         await db
-                .getUsers()
+                .getUsersByDepartment(req.decodedJwt.department)
                 .then(users => {
                     res
                         .status(200)

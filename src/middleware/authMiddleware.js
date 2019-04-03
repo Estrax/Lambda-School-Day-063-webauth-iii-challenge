@@ -17,7 +17,6 @@ async function authenticated(req, res, next){
                     .json({ message: 'Invalid credentials' });
             }else{
                 req.decodedJwt = decodedToken;
-
                 return next();
             }
         });

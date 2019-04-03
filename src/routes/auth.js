@@ -29,8 +29,8 @@ router.route('/login')
                 .getUserByUsername(userData.username)
                 .then(user => {
                     if(user && bcrypt.compareSync(userData.password, user.password)){
-                        const token = generateToken(userData);
-                        console.log(token);
+                        const token = generateToken(user);
+                        
                         res
                             .status(200)
                             .json({ token });
