@@ -3,7 +3,6 @@ const router = require('express').Router();
 const db = require('../database/helpers/helpers');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { authenticated } = require('../middleware/authMiddleware');
 
 router.route('/register')
     .post(async (req, res) => {
@@ -14,7 +13,7 @@ router.route('/register')
                 .then(id => {
                     res
                         .status(201)
-                        .json({ id });
+                        .json({id});
                 })
                 .catch(err => {
                     res
@@ -31,6 +30,7 @@ router.route('/login')
                 .then(user => {
                     if(user && bcrypt.compareSync(userData.password, user.password)){
                         const token = generateToken(userData);
+                        console.log(token);
                         res
                             .status(200)
                             .json({ token });
@@ -47,7 +47,7 @@ router.route('/login')
                 });
     });
 
-async function generateToken(userData){
+function generateToken(userData){
     const payload = {
         subject: userData.id,
         username: userData.username,
@@ -57,7 +57,7 @@ async function generateToken(userData){
     const options = {
         expiresIn: '1d'
     };
-
+    
     return jwt.sign(payload, process.env.SECRET_KEY, options);
 }
 

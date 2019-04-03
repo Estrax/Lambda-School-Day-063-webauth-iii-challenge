@@ -17,7 +17,8 @@ async function getUsers(){
 
 async function addUser(user){
     return await db('users')
-            .insert(user);
+            .insert(user)
+            .then(res => res[0]);
 }
 
 async function getUserById(id){
