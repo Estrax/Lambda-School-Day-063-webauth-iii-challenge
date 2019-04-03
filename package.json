@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:Estrax/Lambda-School-Day-063-webauth-iii-challenge.git",
   "author": "Łukasz Siatka <lukasz@lukaszsiatka.pl>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
