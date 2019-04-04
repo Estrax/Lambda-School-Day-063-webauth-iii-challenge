@@ -6,13 +6,13 @@ router.route('/')
     .get(authenticated, async (req, res) => {
         await db
                 .getUsersByDepartment(req.decodedJwt.department)
-                .then(users => {
-                    res
+                .then(async users => {
+                    await res
                         .status(200)
                         .json(users);
                 })
-                .catch(err => {
-                    res
+                .catch(async err => {
+                    await res
                         .status(404)
                         .json({ message: 'Cannot fetch users!' });
                 });
