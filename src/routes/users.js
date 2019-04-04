@@ -17,5 +17,5 @@ router.route('/')
                         .json({ message: 'Cannot fetch users!' });
                 });
     });
-
+    
 module.exports = router;
