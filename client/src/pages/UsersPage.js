@@ -60,7 +60,7 @@ class UsersPage extends Component {
                 <SearchBar>
                     <SearchInput type="text" name="search" placeholder="Who would you like to find today?" onChange={this.handleChange} value={this.state.search} />
                 </SearchBar>
-                {this.props.authenticated && <UsersContainer userID={this.props.userID} users={objects.filter(elem => elem.lender_id !== this.props.userID).filter(elem => !elem.is_borrowed)} />}
+                {this.props.authenticated && <UsersContainer userID={this.props.userID} users={objects} />}
             </>
         );
     }
